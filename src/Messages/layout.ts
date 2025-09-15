@@ -9,7 +9,7 @@ const createCard = (data: DataType[]): FlexMessage[] => {
       altText: `${data[0].message} : ${data[0].from}`,
       contents: {
         type: 'carousel',
-        contents: data.map(({ id, message, from, url }) => {
+        contents: data.map(({ id, message, from, url = '' }) => {
           const shortMessage =
             typeof message === 'string' && message.length > 50
               ? message.substring(0, 20) + '...'
