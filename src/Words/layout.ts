@@ -78,23 +78,30 @@ const createCard = (data: DataType[]): FlexMessage[] => {
                       }),
                     },
                   },
-                  {
-                    type: 'box',
-                    layout: 'vertical',
-                    maxWidth: '40px',
-                    contents: [
-                      {
-                        type: 'image',
-                        url: 'https://thumbs.lateensail.net/randamin/btn-web.png',
-                        aspectMode: 'fit',
-                      },
-                    ],
-                    action: {
-                      type: 'uri',
-                      label: 'action',
-                      uri: String(url),
-                    },
-                  },
+                  ...(url &&
+                  url.toString().trim() !== '' &&
+                  (url.toString().startsWith('http://') ||
+                    url.toString().startsWith('https://'))
+                    ? [
+                        {
+                          type: 'box' as const,
+                          layout: 'vertical' as const,
+                          maxWidth: '40px',
+                          contents: [
+                            {
+                              type: 'image' as const,
+                              url: 'https://thumbs.lateensail.net/randamin/btn-web.png',
+                              aspectMode: 'fit' as const,
+                            },
+                          ],
+                          action: {
+                            type: 'uri' as const,
+                            label: 'action',
+                            uri: String(url),
+                          },
+                        },
+                      ]
+                    : []),
                   {
                     type: 'box',
                     layout: 'vertical',
