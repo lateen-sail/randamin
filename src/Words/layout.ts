@@ -6,7 +6,7 @@ const createCard = (data: DataType[]): FlexMessage[] => {
   return [
     {
       type: 'flex',
-      altText: `${data[0].title} : ${data[0].desc}`,
+      altText: `${data[0].title}`,
       contents: {
         type: 'carousel',
         contents: data.map(({ id, title, url = '' }) => {
